@@ -2,7 +2,6 @@
   <div class="app">
     <header>
       <div class="title">
-        <img src="./assets/heart.svg" alt="site logo" />
         <h1>Job Portal</h1>
       </div>
       <div class="order">
@@ -32,40 +31,12 @@ export default defineComponent({
   setup() {
     const period = ref(new Date().getFullYear());
     const jobs = ref<Job[]>([
-      {
-        id: "1",
-        title: "Software Engineer",
-        location: "Bengalore",
-        salary: 65000,
-      },
-      { id: "2", title: "Tester", location: "Mumbai", salary: 40000 },
-      { id: "3", title: "HR", location: "Kolkata", salary: 50000 },
-      { id: "4", title: "Team Lead", location: "Bengalore", salary: 82500 },
-      {
-        title: "Farm worker",
-        location: "lon ranch",
-        salary: 30000,
-        id: "5",
-      },
-      {
-        title: "Quarryman",
-        location: "death mountain",
-        salary: 40000,
-        id: "6",
-      },
-      {
-        title: "Flute player",
-        location: "the lost woods",
-        salary: 35000,
-        id: "7",
-      },
-      { title: "Fisherman", location: "lake hylia", salary: 21000, id: "8" },
-      {
-        title: "Prison guard",
-        location: "gerudo valley",
-        salary: 32000,
-        id: "9",
-      },
+      { id: 1, title: "Software Engineer", location: "Bangalore", salary: 65000 },
+      { id: 2, title: "Tester", location: "Mumbai", salary: 45000 },
+      { id: 3, title: "HR", location: "Delhi", salary: 53000 },
+      { id: 4, title: "Team Lead", location: "Chennai", salary: 82500 },
+      { id: 5, title: "Farmer", location: "Pune", salary: 30000 },
+      { id: 6, title: "Singer", location: "WB", salary: 35000 },
     ]);
     const order = ref<OrderTerm>("title");
 
