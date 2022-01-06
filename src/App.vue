@@ -10,12 +10,14 @@
         <button @click="handleClick('salary')">Order by Salary</button>
       </div>
     </header>
-    <JobsList :jobs="jobs" :order="order" />
+    <JobsList :jobs="jobs" :order="order" @emitJobsorder="emitJobsorder" />
     <footer>
       <p>
         &copy; {{ period }} Design & Develop
         <a href="https://github.com/souvik-v2/Job-portal" target="_blank"
-          >@souvik-v2</a> | (Vue3 + TypeScript)
+          >@souvik-v2</a
+        >
+        | (Vue3 + TypeScript)
       </p>
     </footer>
   </div>
@@ -35,12 +37,7 @@ export default defineComponent({
   setup() {
     const period = ref(new Date().getFullYear());
     const jobs = ref<Job[]>([
-      {
-        id: 1,
-        title: "Software Engineer",
-        location: "Bangalore",
-        salary: 65000,
-      },
+      { id: 1, title: "Doctor", location: "Bangalore", salary: 65000 },
       { id: 2, title: "Tester", location: "Mumbai", salary: 45000 },
       { id: 3, title: "HR", location: "Delhi", salary: 53000 },
       { id: 4, title: "Team Lead", location: "Chennai", salary: 82500 },
@@ -53,7 +50,15 @@ export default defineComponent({
       order.value = term;
     };
 
+    console.log("From parent Jobs array:", jobs.value);
+
+    const emitJobsorder = (data: Job[]) => {
+      jobs.value = data;
+      console.log("From parent Jobs updated after emit:", jobs.value);
+    };
+
     return {
+      emitJobsorder,
       period,
       jobs,
       handleClick,
@@ -83,10 +88,6 @@ button {
 header .title {
   display: flex;
   justify-content: center;
-}
-header img {
-  width: 60px;
-  margin-right: 20px;
 }
 header h1 {
   font-size: 3em;

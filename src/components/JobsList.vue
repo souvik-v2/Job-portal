@@ -17,7 +17,7 @@
   </div>
 </template>
 <script lang="ts">
-import { computed, defineComponent, PropType } from "vue";
+import { computed, defineComponent, PropType, watch } from "vue";
 import Job from "@/types/job";
 import OrderTerm from "@/types/OrderTerm";
 
@@ -32,12 +32,21 @@ export default defineComponent({
       type: String as PropType<OrderTerm>
     }
   },
-  setup(props) {
+  emits: ['emitJobsorder'],
+  setup(props, {emit}) {
+    //console.log('Parent Jobs:', props.jobs);
     const orderedJobs = computed(() => {
       return [...props.jobs].sort((a: Job, b: Job) => {
         return a[props.order] > b[props.order] ? 1 : -1;
       });
     });
+    //console.log('Jobs after sorted by order props:', orderedJobs.value);
+
+    watch(orderedJobs, (value: Job[]) => {
+      if(value) {
+        emit('emitJobsorder', value);
+      }
+    }, { deep: true } );
 
     return {
       orderedJobs,
