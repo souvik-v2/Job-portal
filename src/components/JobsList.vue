@@ -4,8 +4,7 @@
       <li v-for="job in orderedJobs" :key="job.id">
         <h2>{{ job.title }} in {{ job.location }}</h2>
         <div class="salary">
-          <img src="../assets/rupee.svg" alt="rupee icon">
-          <p>{{ job.salary }} rupees</p>
+          <p> RS {{ job.salary }}</p>
         </div>
         <div class="description">
           Lorem ipsum is a placeholder text commonly used to demonstrate the
