@@ -12,7 +12,11 @@
     </header>
     <JobsList :jobs="jobs" :order="order" />
     <footer>
-      <p>&copy; {{ period }} Design & Develop  <a href="https://github.com/souvik-v2/Job-portal" target="_blank">@souvik-v2</a></p>
+      <p>
+        &copy; {{ period }} Design & Develop
+        <a href="https://github.com/souvik-v2/Job-portal" target="_blank"
+          >@souvik-v2</a> | (Vue3 + TypeScript)
+      </p>
     </footer>
   </div>
 </template>
@@ -31,7 +35,12 @@ export default defineComponent({
   setup() {
     const period = ref(new Date().getFullYear());
     const jobs = ref<Job[]>([
-      { id: 1, title: "Software Engineer", location: "Bangalore", salary: 65000 },
+      {
+        id: 1,
+        title: "Software Engineer",
+        location: "Bangalore",
+        salary: 65000,
+      },
       { id: 2, title: "Tester", location: "Mumbai", salary: 45000 },
       { id: 3, title: "HR", location: "Delhi", salary: 53000 },
       { id: 4, title: "Team Lead", location: "Chennai", salary: 82500 },
