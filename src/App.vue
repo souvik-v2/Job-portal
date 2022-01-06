@@ -12,6 +12,9 @@
       </div>
     </header>
     <JobsList :jobs="jobs" :order="order" />
+    <footer>
+      <p>&copy; {{ period }} Design & Develop  <a href="https://github.com/souvik-v2/Job-portal" target="_blank">@souvik-v2</a></p>
+    </footer>
   </div>
 </template>
 
@@ -27,6 +30,7 @@ export default defineComponent({
     JobsList,
   },
   setup() {
+    const period = ref(new Date().getFullYear());
     const jobs = ref<Job[]>([
       {
         id: "1",
@@ -70,6 +74,7 @@ export default defineComponent({
     };
 
     return {
+      period,
       jobs,
       handleClick,
       order,
@@ -105,5 +110,14 @@ header img {
 }
 header h1 {
   font-size: 3em;
+}
+footer {
+  text-align: center;
+  font-size: 14px;
+  font-weight: 700;
+}
+footer a {
+  color: #1195c9;
+  cursor: pointer;
 }
 </style>
